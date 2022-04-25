@@ -19,7 +19,6 @@ let flags = document.getElementById("flags");
 let drawerContainer = document.getElementById("drawercontainer");
 let row1 = document.getElementById("row1");
 let emojiArray = [];
-let numOfEmoji = 0;
 
 let listOfSwitches = [frequent, smileys, clothes, animals, foods, sports, transports, objects, hearts, flags];
 
@@ -32,17 +31,16 @@ const notSelected = () => {
 const addEmoji = (emoji) => {
     row1.innerHTML = [];
     document.getElementById("textarea").value += emoji;
+    console.log(emojiArray.length)
     if (!emojiArray.includes(emoji)){
-            if (numOfEmoji < 20 || numOfEmoji == undefined){
-        emojiArray.push(emoji);
-        numOfEmoji++;
-    } else if (numOfEmoji == 20){
-        emojiArray.splice(0, 1);
-        emojiArray.push(emoji);
-        numOfEmoji--;
-    }    
-    }
-    row1.innerHTML = emojiArray.join("");
+        if (emojiArray.length < 20 || emojiArray.length == undefined){
+            emojiArray.push(emoji);
+        } else if (emojiArray.length == 20){
+            emojiArray.splice(0, 1);
+            emojiArray.push(emoji);
+        }    
+        }
+        row1.innerHTML = emojiArray.join("");
 }
 
 frequent.addEventListener("click", () => {
