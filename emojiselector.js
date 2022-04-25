@@ -32,13 +32,15 @@ const notSelected = () => {
 const addEmoji = (emoji) => {
     row1.innerHTML = [];
     document.getElementById("textarea").value += emoji;
-    if (numOfEmoji < 20 || numOfEmoji == undefined){
+    if (!emojiArray.includes(emoji)){
+            if (numOfEmoji < 20 || numOfEmoji == undefined){
         emojiArray.push(emoji);
         numOfEmoji++;
     } else if (numOfEmoji == 20){
         emojiArray.splice(0, 1);
         emojiArray.push(emoji);
         numOfEmoji--;
+    }    
     }
     row1.innerHTML = emojiArray.join("");
 }
